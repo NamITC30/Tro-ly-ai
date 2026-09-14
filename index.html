@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Trợ lý AI</title>
 
     <style>
@@ -31,41 +30,25 @@
         "automaticChatOpenOnNavigation": true,
 
         "customLabelLocales": {
-
             "vi": {
-
                 "input.message": "Nhập tin nhắn...",
-
                 "conversations.title": "Hội thoại",
-
                 "start.new": "Bắt đầu hội thoại mới",
-
                 "empty.messages": "Chưa có tin nhắn",
-
-                "no.more.messages": "Không còn tin nhắn",
-
                 "empty.conversations": "Chưa có hội thoại",
-
-                "no.more.conversations": "Không còn hội thoại",
-
                 "search.placeholder": "Tìm kiếm...",
-
-                "location.placeholder": "Nhập vị trí",
-
                 "members.title": "Thành viên",
-
                 "typing": "đang nhập...",
-
                 "is.typing": "đang nhập...",
-
                 "online": "Trực tuyến",
-
                 "offline": "Ngoại tuyến",
-
                 "clear.messages": "Xóa tin nhắn",
-
                 "delete": "Xóa"
             }
+        },
+
+        "onInit": function() {
+            Kommunicate.launchConversation();
         }
     };
 
