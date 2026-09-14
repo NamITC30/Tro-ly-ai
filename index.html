@@ -1,421 +1,1721 @@
 ```html
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" translate="no">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
   <meta name="google" content="notranslate">
 
-  <title>Trợ lý AI SEWON</title>
+  <meta
+    name="theme-color"
+    content="#2563eb">
+
+  <title>Trợ lý AI</title>
+
 
   <style>
+
     * {
       box-sizing: border-box;
     }
 
     html,
     body {
-      margin: 0;
       width: 100%;
       height: 100%;
-      font-family: Arial, sans-serif;
-      background: #f5f9ff;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      display: flex;
-      flex-direction: column;
+
+      overflow: hidden;
+
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+      color: #172033;
+
+      background:
+        radial-gradient(
+          circle at 15% 0%,
+          rgba(59, 130, 246, 0.12),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 100% 20%,
+          rgba(34, 211, 238, 0.10),
+          transparent 28%
+        ),
+        #f5f9ff;
     }
 
-    .header {
-      height: 70px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 0 20px;
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .header img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-
-    .title {
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .chat {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-    }
-
-    .messages {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .message {
-      margin: 12px 0;
-      display: flex;
-    }
-
-    .message.user {
-      justify-content: flex-end;
-    }
-
-    .message.ai {
-      justify-content: flex-start;
-    }
-
-    .bubble {
-      max-width: 75%;
-      padding: 12px 15px;
-      border-radius: 16px;
-      white-space: pre-wrap;
-      line-height: 1.5;
-    }
-
-    .user .bubble {
-      background: #2563eb;
-      color: white;
-    }
-
-    .ai .bubble {
-      background: white;
-      border: 1px solid #e5e7eb;
-      color: #1f2937;
-    }
-
-    .composer {
-      background: white;
-      border-top: 1px solid #e5e7eb;
-      padding: 12px;
-    }
-
-    .composer-inner {
-      max-width: 800px;
-      margin: auto;
-      display: flex;
-      gap: 8px;
-    }
-
+    button,
     textarea {
-      flex: 1;
-      min-height: 44px;
-      max-height: 120px;
-      resize: none;
-      border: 1px solid #d1d5db;
-      border-radius: 14px;
-      padding: 12px;
-      outline: none;
+      font: inherit;
     }
 
     button {
-      width: 44px;
-      border: 0;
-      border-radius: 12px;
-      background: #2563eb;
-      color: white;
-      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    button:disabled {
-      opacity: 0.5;
+    .app {
+
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+
+      display: flex;
+      flex-direction: column;
+
+      background: rgba(255,255,255,0.94);
     }
+
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    .header {
+
+      height: 76px;
+      min-height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 24px;
+
+      background:
+        rgba(255,255,255,0.88);
+
+      border-bottom:
+        1px solid rgba(148,163,184,0.18);
+
+      backdrop-filter:
+        blur(18px);
+
+      box-shadow:
+        0 4px 20px rgba(15,23,42,0.035);
+
+      z-index: 10;
+    }
+
+
+    .brand {
+
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+
+      min-width: 0;
+    }
+
+
+    .company-logo {
+
+      width: 45px;
+      height: 45px;
+
+      flex: 0 0 45px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      border-radius: 14px;
+
+      background: #ffffff;
+
+      border:
+        1px solid rgba(148,163,184,0.18);
+
+      box-shadow:
+        0 8px 24px rgba(15,23,42,0.08);
+    }
+
+
+    .company-logo img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      padding: 4px;
+    }
+
+
+    .brand-info {
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 3px;
+
+      min-width: 0;
+    }
+
+
+    .brand-title {
+
+      color: #111827;
+
+      font-size: 17px;
+      font-weight: 750;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+
+    .brand-subtitle {
+
+      display: flex;
+      align-items: center;
+
+      gap: 6px;
+
+      color: #64748b;
+
+      font-size: 12px;
+    }
+
+
+    .online-dot {
+
+      width: 7px;
+      height: 7px;
+
+      flex: 0 0 7px;
+
+      border-radius: 50%;
+
+      background: #22c55e;
+
+      box-shadow:
+        0 0 0 3px rgba(34,197,94,0.10);
+    }
+
+
+    /* =========================
+       NEW CHAT BUTTON
+       ========================= */
+
+    .new-chat-btn {
+
+      display: flex;
+      align-items: center;
+
+      gap: 7px;
+
+      padding:
+        10px 14px;
+
+      border:
+        1px solid #dbe4f0;
+
+      border-radius:
+        12px;
+
+      background:
+        #ffffff;
+
+      color:
+        #334155;
+
+      font-size:
+        13px;
+
+      font-weight:
+        650;
+
+      cursor:
+        pointer;
+
+      transition:
+        .2s ease;
+    }
+
+
+    .new-chat-btn:hover {
+
+      background:
+        #f8fbff;
+
+      border-color:
+        #bfdbfe;
+
+      box-shadow:
+        0 6px 18px rgba(37,99,235,0.08);
+
+      transform:
+        translateY(-1px);
+    }
+
+
+    /* =========================
+       CHAT
+       ========================= */
+
+    .chat-area {
+
+      flex:
+        1;
+
+      min-height:
+        0;
+
+      overflow-y:
+        auto;
+
+      padding:
+        26px 20px 18px;
+
+      scroll-behavior:
+        smooth;
+
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(59,130,246,0.055),
+          transparent 40%
+        );
+    }
+
+
+    .chat-area::-webkit-scrollbar {
+      width: 8px;
+    }
+
+
+    .chat-area::-webkit-scrollbar-thumb {
+
+      background:
+        #dbe5f1;
+
+      border-radius:
+        10px;
+    }
+
+
+    .chat-content {
+
+      width:
+        min(980px,100%);
+
+      margin:
+        0 auto;
+    }
+
+
+    /* =========================
+       WELCOME
+       ========================= */
+
+    .welcome {
+
+      min-height:
+        100%;
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      text-align:
+        center;
+
+      padding:
+        30px 10px 70px;
+    }
+
+
+    .welcome-logo {
+
+      width:
+        88px;
+
+      height:
+        88px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      overflow:
+        hidden;
+
+      border-radius:
+        26px;
+
+      background:
+        #ffffff;
+
+      border:
+        1px solid rgba(148,163,184,0.18);
+
+      box-shadow:
+        0 18px 42px rgba(37,99,235,0.15);
+
+      margin-bottom:
+        18px;
+    }
+
+
+    .welcome-logo img {
+
+      width:
+        100%;
+
+      height:
+        100%;
+
+      object-fit:
+        contain;
+
+      padding:
+        8px;
+    }
+
+
+    .welcome-badge {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      gap:
+        6px;
+
+      padding:
+        7px 11px;
+
+      border-radius:
+        999px;
+
+      background:
+        #eff6ff;
+
+      color:
+        #2563eb;
+
+      font-size:
+        12px;
+
+      font-weight:
+        700;
+
+      margin-bottom:
+        13px;
+    }
+
+
+    .welcome h1 {
+
+      margin:
+        0;
+
+      color:
+        #0f172a;
+
+      font-size:
+        clamp(28px,4vw,40px);
+
+      line-height:
+        1.12;
+
+      letter-spacing:
+        -.8px;
+
+      font-weight:
+        800;
+    }
+
+
+    .welcome h1 span {
+
+      background:
+        linear-gradient(
+          90deg,
+          #2563eb,
+          #06b6d4
+        );
+
+      -webkit-background-clip:
+        text;
+
+      background-clip:
+        text;
+
+      color:
+        transparent;
+    }
+
+
+    .welcome p {
+
+      max-width:
+        650px;
+
+      margin:
+        13px auto 0;
+
+      color:
+        #64748b;
+
+      font-size:
+        15px;
+
+      line-height:
+        1.7;
+    }
+
+
+    /* =========================
+       QUICK ACTION
+       ========================= */
+
+    .quick-actions {
+
+      width:
+        min(760px,100%);
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+      gap:
+        12px;
+
+      margin-top:
+        28px;
+    }
+
+
+    .quick-action {
+
+      width:
+        100%;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        12px;
+
+      padding:
+        14px 15px;
+
+      border:
+        1px solid #e2e8f0;
+
+      border-radius:
+        16px;
+
+      background:
+        rgba(255,255,255,0.94);
+
+      color:
+        #334155;
+
+      text-align:
+        left;
+
+      cursor:
+        pointer;
+
+      box-shadow:
+        0 5px 18px rgba(15,23,42,0.035);
+
+      transition:
+        .2s ease;
+    }
+
+
+    .quick-action:hover {
+
+      transform:
+        translateY(-2px);
+
+      border-color:
+        #bfdbfe;
+
+      background:
+        #ffffff;
+
+      box-shadow:
+        0 10px 24px rgba(37,99,235,0.09);
+    }
+
+
+    .quick-icon {
+
+      width:
+        40px;
+
+      height:
+        40px;
+
+      flex:
+        0 0 40px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      border-radius:
+        12px;
+
+      font-size:
+        19px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #eff6ff,
+          #ecfeff
+        );
+    }
+
+
+    .quick-text {
+
+      min-width:
+        0;
+    }
+
+
+    .quick-title {
+
+      color:
+        #1e293b;
+
+      font-size:
+        14px;
+
+      font-weight:
+        700;
+    }
+
+
+    .quick-desc {
+
+      margin-top:
+        2px;
+
+      color:
+        #94a3b8;
+
+      font-size:
+        12px;
+    }
+
+
+    /* =========================
+       MESSAGE
+       ========================= */
+
+    .message {
+
+      display:
+        flex;
+
+      margin:
+        15px 0;
+
+      animation:
+        messageIn .22s ease;
+    }
+
+
+    .message.user {
+
+      justify-content:
+        flex-end;
+    }
+
+
+    .message.ai {
+
+      justify-content:
+        flex-start;
+    }
+
+
+    .message-row {
+
+      max-width:
+        min(86%,820px);
+
+      display:
+        flex;
+
+      align-items:
+        flex-end;
+
+      gap:
+        9px;
+    }
+
+
+    .message.user .message-row {
+
+      flex-direction:
+        row-reverse;
+    }
+
+
+    /* =========================
+       AVATAR
+       ========================= */
+
+    .avatar {
+
+      width:
+        34px;
+
+      height:
+        34px;
+
+      flex:
+        0 0 34px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      overflow:
+        hidden;
+
+      border-radius:
+        11px;
+
+      background:
+        #ffffff;
+
+      border:
+        1px solid #e2e8f0;
+
+      box-shadow:
+        0 6px 14px rgba(37,99,235,0.10);
+    }
+
+
+    .avatar img {
+
+      width:
+        100%;
+
+      height:
+        100%;
+
+      object-fit:
+        contain;
+
+      padding:
+        3px;
+    }
+
+
+    .user-avatar {
+
+      background:
+        linear-gradient(
+          135deg,
+          #2563eb,
+          #06b6d4
+        );
+
+      color:
+        #ffffff;
+
+      border:
+        0;
+
+      font-size:
+        15px;
+    }
+
+
+    /* =========================
+       BUBBLE
+       ========================= */
+
+    .bubble-wrap {
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      gap:
+        4px;
+    }
+
+
+    .message.user .bubble-wrap {
+
+      align-items:
+        flex-end;
+    }
+
+
+    .bubble {
+
+      max-width:
+        100%;
+
+      padding:
+        12px 15px;
+
+      border-radius:
+        18px;
+
+      font-size:
+        14px;
+
+      line-height:
+        1.65;
+
+      white-space:
+        pre-wrap;
+
+      word-break:
+        break-word;
+    }
+
+
+    .message.ai .bubble {
+
+      color:
+        #1e293b;
+
+      background:
+        #ffffff;
+
+      border:
+        1px solid #e2e8f0;
+
+      border-bottom-left-radius:
+        6px;
+
+      box-shadow:
+        0 5px 18px rgba(15,23,42,0.045);
+    }
+
+
+    .message.user .bubble {
+
+      color:
+        #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          #2563eb,
+          #0ea5e9
+        );
+
+      border-bottom-right-radius:
+        6px;
+
+      box-shadow:
+        0 8px 20px rgba(37,99,235,0.16);
+    }
+
+
+    .message-time {
+
+      padding:
+        0 4px;
+
+      color:
+        #94a3b8;
+
+      font-size:
+        10px;
+    }
+
+
+    /* =========================
+       TYPING
+       ========================= */
+
+    .typing {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      gap:
+        5px;
+    }
+
+
+    .typing span {
+
+      width:
+        6px;
+
+      height:
+        6px;
+
+      border-radius:
+        50%;
+
+      background:
+        #94a3b8;
+
+      animation:
+        typing 1.15s infinite ease-in-out;
+    }
+
+
+    .typing span:nth-child(2) {
+      animation-delay: .15s;
+    }
+
+
+    .typing span:nth-child(3) {
+      animation-delay: .30s;
+    }
+
+
+    /* =========================
+       INPUT
+       ========================= */
+
+    .composer-wrap {
+
+      padding:
+        11px 18px 17px;
+
+      background:
+        rgba(255,255,255,0.92);
+
+      border-top:
+        1px solid rgba(148,163,184,0.16);
+
+      backdrop-filter:
+        blur(16px);
+    }
+
+
+    .composer {
+
+      width:
+        min(980px,100%);
+
+      margin:
+        0 auto;
+    }
+
+
+    .input-box {
+
+      display:
+        flex;
+
+      align-items:
+        flex-end;
+
+      gap:
+        9px;
+
+      padding:
+        8px 8px 8px 16px;
+
+      border:
+        1px solid #dbe4ef;
+
+      border-radius:
+        18px;
+
+      background:
+        #ffffff;
+
+      box-shadow:
+        0 8px 30px rgba(15,23,42,0.055);
+
+      transition:
+        .2s ease;
+    }
+
+
+    .input-box:focus-within {
+
+      border-color:
+        #93c5fd;
+
+      box-shadow:
+        0 0 0 4px rgba(37,99,235,0.065),
+        0 10px 32px rgba(15,23,42,0.06);
+    }
+
+
+    textarea {
+
+      flex:
+        1;
+
+      width:
+        100%;
+
+      min-height:
+        44px;
+
+      max-height:
+        145px;
+
+      resize:
+        none;
+
+      border:
+        0;
+
+      outline:
+        0;
+
+      padding:
+        9px 0;
+
+      background:
+        transparent;
+
+      color:
+        #0f172a;
+
+      font-size:
+        14px;
+
+      line-height:
+        1.5;
+    }
+
+
+    textarea::placeholder {
+      color: #94a3b8;
+    }
+
+
+    .send-btn {
+
+      width:
+        44px;
+
+      height:
+        44px;
+
+      flex:
+        0 0 44px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      border:
+        0;
+
+      border-radius:
+        14px;
+
+      color:
+        #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          #2563eb,
+          #06b6d4
+        );
+
+      box-shadow:
+        0 8px 20px rgba(37,99,235,0.20);
+
+      cursor:
+        pointer;
+
+      font-size:
+        18px;
+
+      transition:
+        .2s ease;
+    }
+
+
+    .send-btn:hover {
+
+      transform:
+        translateY(-1px);
+
+      box-shadow:
+        0 11px 24px rgba(37,99,235,0.25);
+    }
+
+
+    .send-btn:disabled {
+
+      opacity:
+        .48;
+
+      cursor:
+        not-allowed;
+
+      transform:
+        none;
+
+      box-shadow:
+        none;
+    }
+
+
+    .composer-footer {
+
+      margin-top:
+        8px;
+
+      text-align:
+        center;
+
+      color:
+        #94a3b8;
+
+      font-size:
+        10.5px;
+    }
+
+
+    /* =========================
+       ERROR
+       ========================= */
+
+    .error-bubble {
+
+      color:
+        #b91c1c !important;
+
+      background:
+        #fff7f7 !important;
+
+      border-color:
+        #fecaca !important;
+    }
+
+
+    /* =========================
+       ANIMATION
+       ========================= */
+
+    @keyframes messageIn {
+
+      from {
+
+        opacity:
+          0;
+
+        transform:
+          translateY(5px);
+      }
+
+      to {
+
+        opacity:
+          1;
+
+        transform:
+          translateY(0);
+      }
+
+    }
+
+
+    @keyframes typing {
+
+      0%,
+      60%,
+      100% {
+
+        transform:
+          translateY(0);
+
+        opacity:
+          .4;
+      }
+
+      30% {
+
+        transform:
+          translateY(-3px);
+
+        opacity:
+          1;
+      }
+
+    }
+
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 720px) {
+
+      .header {
+
+        height:
+          66px;
+
+        min-height:
+          66px;
+
+        padding:
+          0 12px;
+      }
+
+
+      .company-logo {
+
+        width:
+          40px;
+
+        height:
+          40px;
+
+        flex-basis:
+          40px;
+      }
+
+
+      .brand-title {
+
+        font-size:
+          15px;
+      }
+
+
+      .brand-subtitle {
+
+        font-size:
+          11px;
+      }
+
+
+      .new-chat-btn {
+
+        padding:
+          9px 10px;
+
+        font-size:
+          12px;
+      }
+
+
+      .new-chat-btn .label {
+
+        display:
+          none;
+      }
+
+
+      .chat-area {
+
+        padding:
+          18px 11px 14px;
+      }
+
+
+      .message-row {
+
+        max-width:
+          92%;
+      }
+
+
+      .bubble {
+
+        font-size:
+          13.5px;
+
+        padding:
+          11px 13px;
+      }
+
+
+      .avatar {
+
+        width:
+          31px;
+
+        height:
+          31px;
+
+        flex-basis:
+          31px;
+      }
+
+
+      .quick-actions {
+
+        grid-template-columns:
+          1fr;
+
+        gap:
+          10px;
+
+        margin-top:
+          22px;
+      }
+
+
+      .welcome {
+
+        padding:
+          25px 5px 60px;
+      }
+
+
+      .welcome-logo {
+
+        width:
+          72px;
+
+        height:
+          72px;
+      }
+
+
+      .welcome p {
+
+        font-size:
+          14px;
+      }
+
+
+      .composer-wrap {
+
+        padding:
+          8px 9px 12px;
+      }
+
+
+      .composer-footer {
+
+        font-size:
+          9.5px;
+      }
+
+    }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <div class="header">
-    <img src="./SW.jpg" alt="SEWON VINA">
-    <div class="title">Trợ lý AI</div>
-  </div>
 
-  <div class="chat">
-    <div class="messages" id="messages">
-      <div class="message ai">
-        <div class="bubble">
-          Xin chào! Tôi là Trợ lý AI của SEWON VINA. Tôi có thể giúp gì cho bạn?
-        </div>
+<div class="app">
+
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+
+    <div class="brand">
+
+
+      <div class="company-logo">
+
+        <img
+          src="./SW.jpg"
+          alt="Logo SEWON VINA">
+
       </div>
+
+
+      <div class="brand-info">
+
+        <div class="brand-title">
+          Trợ lý AI
+        </div>
+
+
+        <div class="brand-subtitle">
+
+          <span class="online-dot"></span>
+
+          Đang hoạt động
+
+        </div>
+
+      </div>
+
     </div>
-  </div>
 
-  <div class="composer">
-    <div class="composer-inner">
 
-      <textarea
-        id="input"
-        placeholder="Nhập câu hỏi..."
-        autocomplete="off"
-      ></textarea>
+    <button
+      class="new-chat-btn"
+      id="newChatBtn">
 
-      <button id="send">➤</button>
+      ＋
+
+      <span class="label">
+        Hội thoại mới
+      </span>
+
+    </button>
+
+
+  </header>
+
+
+  <!-- CHAT -->
+
+  <main
+    class="chat-area"
+    id="chatArea">
+
+
+    <div
+      class="chat-content"
+      id="chatContent">
+
+
+      <!-- WELCOME -->
+
+      <section
+        class="welcome"
+        id="welcome">
+
+
+        <div class="welcome-logo">
+
+          <img
+            src="./SW.jpg"
+            alt="Logo SEWON VINA">
+
+        </div>
+
+
+        <div class="welcome-badge">
+
+          ✨ Trợ lý thông minh
+
+        </div>
+
+
+        <h1>
+
+          Xin chào! <span>👋</span>
+
+        </h1>
+
+
+        <p>
+
+          Tôi là Trợ lý AI của SEWON VINA.
+          Hãy đặt câu hỏi hoặc chọn một gợi ý bên dưới
+          để bắt đầu cuộc trò chuyện.
+
+        </p>
+
+
+        <div class="quick-actions">
+
+
+          <button
+            class="quick-action"
+            data-message="Tôi có thể hỏi bạn những gì?">
+
+
+            <div class="quick-icon">
+              💡
+            </div>
+
+
+            <div class="quick-text">
+
+              <div class="quick-title">
+                Tôi có thể hỏi bạn những gì?
+              </div>
+
+              <div class="quick-desc">
+                Khám phá khả năng của Trợ lý AI
+              </div>
+
+            </div>
+
+
+          </button>
+
+
+          <button
+            class="quick-action"
+            data-message="Hãy giới thiệu về bạn">
+
+
+            <div class="quick-icon">
+              🤖
+            </div>
+
+
+            <div class="quick-text">
+
+              <div class="quick-title">
+                Hãy giới thiệu về bạn
+              </div>
+
+              <div class="quick-desc">
+                Tìm hiểu về Trợ lý AI
+              </div>
+
+            </div>
+
+
+          </button>
+
+
+          <button
+            class="quick-action"
+            data-message="Giúp tôi tìm thông tin">
+
+
+            <div class="quick-icon">
+              🔎
+            </div>
+
+
+            <div class="quick-text">
+
+              <div class="quick-title">
+                Giúp tôi tìm thông tin
+              </div>
+
+              <div class="quick-desc">
+                Hỗ trợ tra cứu và giải đáp
+              </div>
+
+            </div>
+
+
+          </button>
+
+
+          <button
+            class="quick-action"
+            data-message="Hướng dẫn tôi sử dụng hệ thống">
+
+
+            <div class="quick-icon">
+              🧭
+            </div>
+
+
+            <div class="quick-text">
+
+              <div class="quick-title">
+                Hướng dẫn tôi sử dụng hệ thống
+              </div>
+
+              <div class="quick-desc">
+                Hỗ trợ từng bước khi cần
+              </div>
+
+            </div>
+
+
+          </button>
+
+
+        </div>
+
+
+      </section>
+
 
     </div>
-  </div>
+
+
+  </main>
+
+
+  <!-- INPUT -->
+
+  <section class="composer-wrap">
+
+
+    <div class="composer">
+
+
+      <div class="input-box">
+
+
+        <textarea
+          id="messageInput"
+          rows="1"
+          placeholder="Nhập câu hỏi của bạn..."
+          autocomplete="off"
+          translate="no"></textarea>
+
+
+        <button
+          class="send-btn"
+          id="sendBtn"
+          title="Gửi">
+
+          ➤
+
+        </button>
+
+
+      </div>
+
+
+      <div class="composer-footer">
+
+        Trợ lý AI có thể đưa ra thông tin chưa chính xác.
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+</div>
+
 
 <script>
 
-  /* ============================
-     DIFY CONFIG
-     ============================ */
+
+  /* =========================================================
+     DIFY
+     ========================================================= */
+
 
   const DIFY_API_KEY =
-    "DÁN_API_KEY_CỦA_BẠN";
+    "DÁN_API_KEY_DIFY_VÀO_ĐÂY";
+
 
   const DIFY_API_URL =
     "https://academics-beautifully-learners-absence.trycloudflare.com/v1/chat-messages";
 
 
-  /* ============================
+  /* =========================================================
      STATE
-     ============================ */
+     ========================================================= */
 
   let conversationId = "";
 
+  let isSending = false;
 
-  const input =
-    document.getElementById("input");
 
-  const send =
-    document.getElementById("send");
+  /* =========================================================
+     DOM
+     ========================================================= */
 
-  const messages =
-    document.getElementById("messages");
+  const chatArea =
+    document.getElementById("chatArea");
 
+  const chatContent =
+    document.getElementById("chatContent");
 
-  /* ============================
-     ADD MESSAGE
-     ============================ */
+  const messageInput =
+    document.getElementById("messageInput");
 
-  function addMessage(
-    type,
-    text
-  ) {
+  const sendBtn =
+    document.getElementById("sendBtn");
 
-    const wrapper =
-      document.createElement("div");
+  const newChatBtn =
+    document.getElementById("newChatBtn");
 
-    wrapper.className =
-      "message " + type;
 
-    const bubble =
-      document.createElement("div");
+  /* =========================================================
+     AUTO RESIZE
+     ========================================================= */
 
-    bubble.className =
-      "bubble";
+  messageInput.addEventListener(
+    "input",
+    () => {
 
-    bubble.textContent =
-      text;
+      messageInput.style.height =
+        "auto";
 
-    wrapper.appendChild(
-      bubble
-    );
-
-    messages.appendChild(
-      wrapper
-    );
-
-    document
-      .querySelector(".chat")
-      .scrollTop =
-      document
-        .querySelector(".chat")
-        .scrollHeight;
-
-    return bubble;
-  }
-
-
-  /* ============================
-     SEND MESSAGE
-     ============================ */
-
-  async function sendMessage() {
-
-    const query =
-      input.value.trim();
-
-    if (!query) {
-      return;
-    }
-
-    send.disabled = true;
-
-    addMessage(
-      "user",
-      query
-    );
-
-    input.value = "";
-
-
-    const answerBubble =
-      addMessage(
-        "ai",
-        "Đang trả lời..."
-      );
-
-
-    try {
-
-      const response =
-        await fetch(
-          DIFY_API_URL,
-          {
-            method: "POST",
-
-            headers: {
-              "Authorization":
-                "Bearer " +
-                DIFY_API_KEY,
-
-              "Content-Type":
-                "application/json"
-            },
-
-            body:
-              JSON.stringify({
-
-                inputs: {},
-
-                query: query,
-
-                response_mode:
-                  "blocking",
-
-                conversation_id:
-                  conversationId,
-
-                user:
-                  "sewon-vina-user"
-
-              })
-          }
-        );
-
-
-      const raw =
-        await response.text();
-
-
-      console.log(
-        "HTTP STATUS:",
-        response.status
-      );
-
-      console.log(
-        "DIFY RESPONSE:",
-        raw
-      );
-
-
-      if (!response.ok) {
-
-        answerBubble.textContent =
-          "Dify trả lỗi HTTP " +
-          response.status;
-
-        console.error(raw);
-
-        return;
-      }
-
-
-      let data;
-
-      try {
-
-        data =
-          JSON.parse(raw);
-
-      } catch {
-
-        answerBubble.textContent =
-          "Dify không trả JSON hợp lệ.";
-
-        return;
-      }
-
-
-      let answer =
-        data.answer || "";
-
-
-      /*
-       * Xóa <think>...</think>
-       */
-
-      answer =
-        answer.replace(
-          /<think>[\s\S]*?<\/think>/gi,
-          ""
-        );
-
-
-      answer =
-        answer.replace(
-          /<think>[\s\S]*/gi,
-          ""
-        );
-
-
-      answer =
-        answer.trim();
-
-
-      answerBubble.textContent =
-        answer ||
-        "Dify không trả nội dung.";
-
-
-      if (
-        data.conversation_id
-      ) {
-
-        conversationId =
-          data.conversation_id;
-
-      }
-
-
-    } catch (error) {
-
-      console.error(
-        "FETCH ERROR:",
-        error
-      );
-
-      answerBubble.textContent =
-        "Không thể kết nối Dify.";
+      messageInput.style.height =
+        Math.min(
+          messageInput.scrollHeight,
+          145
+        ) + "px";
 
     }
-
-
-    send.disabled = false;
-
-    input.focus();
-
-  }
-
-
-  send.addEventListener(
-    "click",
-    sendMessage
   );
 
 
-  input.addEventListener(
+  /* =========================================================
+     ENTER SEND
+     ========================================================= */
+
+  messageInput.addEventListener(
     "keydown",
-    function(event) {
+    event => {
 
       if (
         event.key === "Enter" &&
@@ -431,8 +1731,573 @@
     }
   );
 
+
+  /* =========================================================
+     QUICK ACTIONS
+     ========================================================= */
+
+  function attachQuickActions() {
+
+    document
+      .querySelectorAll(".quick-action")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const message =
+              button.dataset.message || "";
+
+            messageInput.value =
+              message;
+
+            messageInput.dispatchEvent(
+              new Event("input")
+            );
+
+            sendMessage();
+
+          }
+        );
+
+      });
+
+  }
+
+
+  attachQuickActions();
+
+
+  /* =========================================================
+     NEW CHAT
+     ========================================================= */
+
+  newChatBtn.addEventListener(
+    "click",
+    () => {
+
+      conversationId = "";
+
+      location.reload();
+
+    }
+  );
+
+
+  /* =========================================================
+     ADD MESSAGE
+     ========================================================= */
+
+  function addMessage(
+    role,
+    text
+  ) {
+
+    const message =
+      document.createElement("div");
+
+    message.className =
+      `message ${role}`;
+
+
+    const row =
+      document.createElement("div");
+
+    row.className =
+      "message-row";
+
+
+    const avatar =
+      document.createElement("div");
+
+    avatar.className =
+      "avatar";
+
+
+    if (
+      role === "ai"
+    ) {
+
+      avatar.innerHTML = `
+
+        <img
+          src="./SW.jpg"
+          alt="SEWON VINA">
+
+      `;
+
+    } else {
+
+      avatar.classList.add(
+        "user-avatar"
+      );
+
+      avatar.textContent =
+        "👤";
+
+    }
+
+
+    const bubbleWrap =
+      document.createElement("div");
+
+    bubbleWrap.className =
+      "bubble-wrap";
+
+
+    const bubble =
+      document.createElement("div");
+
+    bubble.className =
+      "bubble";
+
+    bubble.textContent =
+      text;
+
+
+    const time =
+      document.createElement("div");
+
+    time.className =
+      "message-time";
+
+    time.textContent =
+      currentTime();
+
+
+    bubbleWrap.appendChild(
+      bubble
+    );
+
+    bubbleWrap.appendChild(
+      time
+    );
+
+
+    row.appendChild(
+      avatar
+    );
+
+    row.appendChild(
+      bubbleWrap
+    );
+
+
+    message.appendChild(
+      row
+    );
+
+
+    chatContent.appendChild(
+      message
+    );
+
+
+    scrollToBottom();
+
+
+    return bubble;
+
+  }
+
+
+  /* =========================================================
+     TYPING
+     ========================================================= */
+
+  function addTypingMessage() {
+
+    const message =
+      document.createElement("div");
+
+    message.className =
+      "message ai";
+
+
+    const row =
+      document.createElement("div");
+
+    row.className =
+      "message-row";
+
+
+    const avatar =
+      document.createElement("div");
+
+    avatar.className =
+      "avatar";
+
+
+    avatar.innerHTML = `
+
+      <img
+        src="./SW.jpg"
+        alt="SEWON VINA">
+
+    `;
+
+
+    const bubbleWrap =
+      document.createElement("div");
+
+    bubbleWrap.className =
+      "bubble-wrap";
+
+
+    const bubble =
+      document.createElement("div");
+
+    bubble.className =
+      "bubble";
+
+
+    bubble.innerHTML = `
+
+      <div class="typing">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+    `;
+
+
+    bubbleWrap.appendChild(
+      bubble
+    );
+
+
+    row.appendChild(
+      avatar
+    );
+
+    row.appendChild(
+      bubbleWrap
+    );
+
+
+    message.appendChild(
+      row
+    );
+
+
+    chatContent.appendChild(
+      message
+    );
+
+
+    scrollToBottom();
+
+
+    return bubble;
+
+  }
+
+
+  /* =========================================================
+     SEND MESSAGE
+     ========================================================= */
+
+  async function sendMessage() {
+
+
+    if (
+      isSending
+    ) {
+
+      return;
+
+    }
+
+
+    const query =
+      messageInput.value.trim();
+
+
+    if (!query) {
+
+      return;
+
+    }
+
+
+    if (
+      DIFY_API_KEY ===
+      "app-SyULax2Wzgg5fFfPkw11wDWm"
+    ) {
+
+      alert(
+        "Bạn chưa nhập Dify API Key."
+      );
+
+      return;
+
+    }
+
+
+    isSending =
+      true;
+
+    sendBtn.disabled =
+      true;
+
+
+    /* USER */
+
+    addMessage(
+      "user",
+      query
+    );
+
+
+    /* CLEAR */
+
+    messageInput.value =
+      "";
+
+    messageInput.style.height =
+      "auto";
+
+
+    /* TYPING */
+
+    const typingBubble =
+      addTypingMessage();
+
+
+    try {
+
+
+      const response =
+        await fetch(
+          DIFY_API_URL,
+          {
+
+            method:
+              "POST",
+
+            headers: {
+
+              "Authorization":
+                "Bearer " +
+                DIFY_API_KEY,
+
+              "Content-Type":
+                "application/json"
+
+            },
+
+            body:
+              JSON.stringify({
+
+                inputs:
+                  {},
+
+                query:
+                  query,
+
+                response_mode:
+                  "blocking",
+
+                conversation_id:
+                  conversationId,
+
+                user:
+                  "sewon-vina-user"
+
+              })
+
+          }
+        );
+
+
+      /* ERROR */
+
+      if (
+        !response.ok
+      ) {
+
+        const errorText =
+          await response.text();
+
+        console.error(
+          "DIFY ERROR:",
+          errorText
+        );
+
+        throw new Error(
+          errorText ||
+          `HTTP ${response.status}`
+        );
+
+      }
+
+
+      /* JSON */
+
+      const data =
+        await response.json();
+
+
+      /* ANSWER */
+
+      let answer =
+        data.answer || "";
+
+
+      /*
+       * REMOVE THINK
+       */
+
+      answer =
+        removeThinking(
+          answer
+        );
+
+
+      if (!answer) {
+
+        answer =
+          "Tôi chưa nhận được câu trả lời.";
+
+      }
+
+
+      typingBubble.textContent =
+        answer;
+
+
+      /* CONVERSATION */
+
+      if (
+        data.conversation_id
+      ) {
+
+        conversationId =
+          data.conversation_id;
+
+      }
+
+
+    } catch (error) {
+
+
+      console.error(
+        "CHAT ERROR:",
+        error
+      );
+
+
+      typingBubble.textContent =
+        "Xin lỗi, hiện tại tôi không thể kết nối với Trợ lý AI.";
+
+
+      typingBubble.classList.add(
+        "error-bubble"
+      );
+
+    }
+
+
+    isSending =
+      false;
+
+    sendBtn.disabled =
+      false;
+
+    messageInput.focus();
+
+    scrollToBottom();
+
+  }
+
+
+  /* =========================================================
+     REMOVE THINK
+     ========================================================= */
+
+  function removeThinking(
+    text
+  ) {
+
+    if (!text) {
+
+      return "";
+
+    }
+
+
+    text =
+      text.replace(
+        /<think>[\s\S]*?<\/think>/gi,
+        ""
+      );
+
+
+    text =
+      text.replace(
+        /<think>[\s\S]*/gi,
+        ""
+      );
+
+
+    return text.trim();
+
+  }
+
+
+  /* =========================================================
+     TIME
+     ========================================================= */
+
+  function currentTime() {
+
+    return new Date()
+      .toLocaleTimeString(
+        "vi-VN",
+        {
+          hour:
+            "2-digit",
+
+          minute:
+            "2-digit"
+        }
+      );
+
+  }
+
+
+  /* =========================================================
+     SCROLL
+     ========================================================= */
+
+  function scrollToBottom() {
+
+    requestAnimationFrame(
+      () => {
+
+        chatArea.scrollTop =
+          chatArea.scrollHeight;
+
+      }
+    );
+
+  }
+
+
+  /* =========================================================
+     START
+     ========================================================= */
+
+  messageInput.focus();
+
+
 </script>
 
+
 </body>
+
 </html>
-```
