@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi" translate="no">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -15,7 +17,9 @@
 
   <title>Trợ lý AI</title>
 
+
   <style>
+
     /* =========================================================
        RESET
        ========================================================= */
@@ -33,14 +37,15 @@
     }
 
     body {
+
       overflow: hidden;
+
       font-family:
         Inter,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         Roboto,
-        Helvetica,
         Arial,
         sans-serif;
 
@@ -48,14 +53,14 @@
 
       background:
         radial-gradient(
-          circle at 20% 0%,
-          rgba(96, 165, 250, 0.14),
-          transparent 32%
+          circle at 15% 0%,
+          rgba(59, 130, 246, 0.12),
+          transparent 30%
         ),
         radial-gradient(
           circle at 100% 20%,
-          rgba(45, 212, 191, 0.10),
-          transparent 30%
+          rgba(34, 211, 238, 0.10),
+          transparent 28%
         ),
         #f5f9ff;
     }
@@ -75,6 +80,7 @@
        ========================================================= */
 
     .app {
+
       width: 100%;
       height: 100vh;
       height: 100dvh;
@@ -82,7 +88,7 @@
       display: flex;
       flex-direction: column;
 
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.94);
     }
 
 
@@ -91,6 +97,7 @@
        ========================================================= */
 
     .header {
+
       height: 76px;
       min-height: 76px;
 
@@ -98,8 +105,7 @@
       align-items: center;
       justify-content: space-between;
 
-      padding:
-        0 24px;
+      padding: 0 24px;
 
       background:
         rgba(255,255,255,0.88);
@@ -107,7 +113,8 @@
       border-bottom:
         1px solid rgba(148,163,184,0.18);
 
-      backdrop-filter: blur(18px);
+      backdrop-filter:
+        blur(18px);
 
       box-shadow:
         0 4px 20px rgba(15,23,42,0.035);
@@ -121,26 +128,30 @@
        ========================================================= */
 
     .brand {
+
       display: flex;
       align-items: center;
+
       gap: 12px;
 
       min-width: 0;
     }
 
-    .company-logo {
-      width: 44px;
-      height: 44px;
 
-      flex: 0 0 44px;
+    .company-logo {
+
+      width: 45px;
+      height: 45px;
+
+      flex: 0 0 45px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      border-radius: 14px;
-
       overflow: hidden;
+
+      border-radius: 14px;
 
       background: #ffffff;
 
@@ -151,7 +162,9 @@
         0 8px 24px rgba(15,23,42,0.08);
     }
 
+
     .company-logo img {
+
       width: 100%;
       height: 100%;
 
@@ -160,36 +173,46 @@
       padding: 5px;
     }
 
+
     .brand-info {
-      min-width: 0;
 
       display: flex;
       flex-direction: column;
+
       gap: 3px;
+
+      min-width: 0;
     }
 
+
     .brand-title {
-      font-size: 17px;
-      font-weight: 750;
 
       color: #111827;
+
+      font-size: 17px;
+      font-weight: 750;
 
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
+
     .brand-subtitle {
+
       display: flex;
       align-items: center;
+
       gap: 6px;
 
-      font-size: 12px;
-
       color: #64748b;
+
+      font-size: 12px;
     }
 
+
     .online-dot {
+
       width: 7px;
       height: 7px;
 
@@ -205,24 +228,27 @@
 
 
     /* =========================================================
-       HEADER ACTION
+       NEW CHAT
        ========================================================= */
 
     .new-chat-btn {
+
       display: flex;
       align-items: center;
+
       gap: 7px;
 
-      border: 1px solid #dbe4f0;
+      padding:
+        10px 14px;
+
+      border:
+        1px solid #dbe4f0;
+
+      border-radius: 12px;
 
       background: #ffffff;
 
       color: #334155;
-
-      border-radius: 12px;
-
-      padding:
-        10px 13px;
 
       font-size: 13px;
       font-weight: 650;
@@ -230,13 +256,12 @@
       cursor: pointer;
 
       transition:
-        transform .18s ease,
-        background .18s ease,
-        border-color .18s ease,
-        box-shadow .18s ease;
+        .2s ease;
     }
 
+
     .new-chat-btn:hover {
+
       background: #f8fbff;
 
       border-color: #bfdbfe;
@@ -244,11 +269,8 @@
       box-shadow:
         0 6px 18px rgba(37,99,235,0.08);
 
-      transform: translateY(-1px);
-    }
-
-    .new-chat-btn:active {
-      transform: translateY(0);
+      transform:
+        translateY(-1px);
     }
 
 
@@ -257,7 +279,9 @@
        ========================================================= */
 
     .chat-area {
+
       flex: 1;
+
       min-height: 0;
 
       overflow-y: auto;
@@ -275,22 +299,33 @@
         );
     }
 
+
     .chat-area::-webkit-scrollbar {
       width: 8px;
     }
 
+
     .chat-area::-webkit-scrollbar-thumb {
+
       background: #dbe5f1;
+
       border-radius: 10px;
     }
 
+
     .chat-area::-webkit-scrollbar-track {
+
       background: transparent;
     }
 
+
     .chat-content {
-      width: min(980px, 100%);
-      margin: 0 auto;
+
+      width:
+        min(980px, 100%);
+
+      margin:
+        0 auto;
     }
 
 
@@ -299,94 +334,122 @@
        ========================================================= */
 
     .welcome {
-      min-height: 100%;
 
-      display: flex;
-      flex-direction: column;
+      min-height:
+        100%;
 
-      justify-content: center;
-      align-items: center;
+      display:
+        flex;
 
-      text-align: center;
+      flex-direction:
+        column;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      text-align:
+        center;
 
       padding:
         30px 10px 70px;
     }
 
+
     .welcome-logo {
-      width: 82px;
-      height: 82px;
+
+      width: 88px;
+      height: 88px;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
-      border-radius: 24px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #2563eb,
-          #38bdf8
-        );
-
-      box-shadow:
-        0 18px 42px rgba(37,99,235,0.22);
-
       overflow: hidden;
 
-      margin-bottom: 20px;
+      border-radius: 26px;
+
+      background: #ffffff;
+
+      border:
+        1px solid rgba(148,163,184,0.18);
+
+      box-shadow:
+        0 18px 42px rgba(37,99,235,0.15);
+
+      margin-bottom: 18px;
     }
 
+
     .welcome-logo img {
+
       width: 100%;
       height: 100%;
 
       object-fit: contain;
 
       padding: 10px;
-
-      background: #ffffff;
-
-      border-radius: 24px;
     }
 
+
     .welcome-badge {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 6px;
 
       padding:
         7px 11px;
 
-      border-radius: 999px;
+      border-radius:
+        999px;
 
-      background: #eff6ff;
+      background:
+        #eff6ff;
 
-      color: #2563eb;
+      color:
+        #2563eb;
 
-      font-size: 12px;
-      font-weight: 700;
+      font-size:
+        12px;
 
-      margin-bottom: 13px;
+      font-weight:
+        700;
+
+      margin-bottom:
+        13px;
     }
 
+
     .welcome h1 {
-      margin: 0;
+
+      margin:
+        0;
+
+      color:
+        #0f172a;
 
       font-size:
         clamp(28px, 4vw, 40px);
 
-      line-height: 1.12;
+      line-height:
+        1.12;
 
-      letter-spacing: -0.8px;
+      letter-spacing:
+        -.8px;
 
-      color: #0f172a;
-
-      font-weight: 800;
+      font-weight:
+        800;
     }
 
+
     .welcome h1 span {
+
       background:
         linear-gradient(
           90deg,
@@ -394,23 +457,33 @@
           #06b6d4
         );
 
-      -webkit-background-clip: text;
-      background-clip: text;
+      -webkit-background-clip:
+        text;
 
-      color: transparent;
+      background-clip:
+        text;
+
+      color:
+        transparent;
     }
 
+
     .welcome p {
-      max-width: 650px;
+
+      max-width:
+        650px;
 
       margin:
         13px auto 0;
 
-      font-size: 15px;
+      color:
+        #64748b;
 
-      line-height: 1.7;
+      font-size:
+        15px;
 
-      color: #64748b;
+      line-height:
+        1.7;
     }
 
 
@@ -419,77 +492,107 @@
        ========================================================= */
 
     .quick-actions {
-      width: min(760px, 100%);
 
-      display: grid;
+      width:
+        min(760px, 100%);
+
+      display:
+        grid;
 
       grid-template-columns:
         repeat(2, minmax(0, 1fr));
 
-      gap: 12px;
+      gap:
+        12px;
 
-      margin-top: 28px;
+      margin-top:
+        28px;
     }
 
-    .quick-action {
-      display: flex;
-      align-items: center;
 
-      gap: 12px;
+    .quick-action {
 
       width: 100%;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        12px;
 
       padding:
         14px 15px;
 
-      text-align: left;
-
       border:
         1px solid #e2e8f0;
 
-      border-radius: 16px;
+      border-radius:
+        16px;
 
       background:
-        rgba(255,255,255,0.92);
+        rgba(255,255,255,0.94);
 
-      color: #334155;
+      color:
+        #334155;
 
-      cursor: pointer;
+      text-align:
+        left;
+
+      cursor:
+        pointer;
 
       box-shadow:
         0 5px 18px rgba(15,23,42,0.035);
 
       transition:
-        transform .18s ease,
-        border-color .18s ease,
-        box-shadow .18s ease,
-        background .18s ease;
+        .2s ease;
     }
 
+
     .quick-action:hover {
-      transform: translateY(-2px);
 
-      border-color: #bfdbfe;
+      transform:
+        translateY(-2px);
 
-      background: #ffffff;
+      border-color:
+        #bfdbfe;
+
+      background:
+        #ffffff;
 
       box-shadow:
         0 10px 24px rgba(37,99,235,0.09);
     }
 
+
     .quick-icon {
-      width: 40px;
-      height: 40px;
 
-      flex: 0 0 40px;
+      width:
+        40px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      height:
+        40px;
 
-      border-radius: 12px;
+      flex:
+        0 0 40px;
 
-      font-size: 19px;
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      border-radius:
+        12px;
+
+      font-size:
+        19px;
 
       background:
         linear-gradient(
@@ -499,23 +602,37 @@
         );
     }
 
+
     .quick-text {
-      min-width: 0;
+
+      min-width:
+        0;
     }
+
 
     .quick-title {
-      font-size: 14px;
-      font-weight: 700;
 
-      color: #1e293b;
+      color:
+        #1e293b;
+
+      font-size:
+        14px;
+
+      font-weight:
+        700;
     }
 
+
     .quick-desc {
-      margin-top: 2px;
 
-      font-size: 12px;
+      margin-top:
+        2px;
 
-      color: #94a3b8;
+      color:
+        #94a3b8;
+
+      font-size:
+        12px;
     }
 
 
@@ -524,7 +641,9 @@
        ========================================================= */
 
     .message {
-      display: flex;
+
+      display:
+        flex;
 
       margin:
         15px 0;
@@ -533,25 +652,41 @@
         messageIn .22s ease;
     }
 
+
     .message.user {
-      justify-content: flex-end;
+
+      justify-content:
+        flex-end;
     }
+
 
     .message.ai {
-      justify-content: flex-start;
+
+      justify-content:
+        flex-start;
     }
+
 
     .message-row {
-      display: flex;
-      align-items: flex-end;
 
-      gap: 9px;
+      max-width:
+        min(86%, 820px);
 
-      max-width: min(86%, 820px);
+      display:
+        flex;
+
+      align-items:
+        flex-end;
+
+      gap:
+        9px;
     }
 
+
     .message.user .message-row {
-      flex-direction: row-reverse;
+
+      flex-direction:
+        row-reverse;
     }
 
 
@@ -560,43 +695,75 @@
        ========================================================= */
 
     .avatar {
-      width: 34px;
-      height: 34px;
 
-      flex: 0 0 34px;
+      width:
+        34px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      height:
+        34px;
 
-      border-radius: 11px;
+      flex:
+        0 0 34px;
 
-      overflow: hidden;
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      overflow:
+        hidden;
+
+      border-radius:
+        11px;
+
+      background:
+        #ffffff;
+
+      border:
+        1px solid #e2e8f0;
+
+      box-shadow:
+        0 6px 14px rgba(37,99,235,0.10);
+    }
+
+
+    .avatar img {
+
+      width:
+        100%;
+
+      height:
+        100%;
+
+      object-fit:
+        contain;
+
+      padding:
+        4px;
+    }
+
+
+    .user-avatar {
 
       background:
         linear-gradient(
           135deg,
           #2563eb,
-          #22d3ee
+          #06b6d4
         );
 
-      color: white;
+      color:
+        #ffffff;
 
-      font-size: 16px;
+      border:
+        0;
 
-      box-shadow:
-        0 6px 14px rgba(37,99,235,0.14);
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: contain;
-
-      background: #ffffff;
-
-      padding: 4px;
+      font-size:
+        15px;
     }
 
 
@@ -605,47 +772,73 @@
        ========================================================= */
 
     .bubble-wrap {
-      display: flex;
-      flex-direction: column;
 
-      gap: 4px;
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      gap:
+        4px;
     }
+
 
     .message.user .bubble-wrap {
-      align-items: flex-end;
+
+      align-items:
+        flex-end;
     }
 
+
     .bubble {
+
+      max-width:
+        100%;
+
       padding:
         12px 15px;
 
-      border-radius: 18px;
+      border-radius:
+        18px;
 
-      font-size: 14px;
+      font-size:
+        14px;
 
-      line-height: 1.65;
+      line-height:
+        1.65;
 
-      white-space: pre-wrap;
+      white-space:
+        pre-wrap;
 
-      word-break: break-word;
+      word-break:
+        break-word;
     }
 
-    .message.ai .bubble {
-      background: #ffffff;
 
-      color: #1e293b;
+    .message.ai .bubble {
+
+      color:
+        #1e293b;
+
+      background:
+        #ffffff;
 
       border:
         1px solid #e2e8f0;
 
-      border-bottom-left-radius: 6px;
+      border-bottom-left-radius:
+        6px;
 
       box-shadow:
         0 5px 18px rgba(15,23,42,0.045);
     }
 
+
     .message.user .bubble {
-      color: #ffffff;
+
+      color:
+        #ffffff;
 
       background:
         linear-gradient(
@@ -654,19 +847,24 @@
           #0ea5e9
         );
 
-      border-bottom-right-radius: 6px;
+      border-bottom-right-radius:
+        6px;
 
       box-shadow:
         0 8px 20px rgba(37,99,235,0.16);
     }
 
+
     .message-time {
+
       padding:
         0 4px;
 
-      font-size: 10px;
+      color:
+        #94a3b8;
 
-      color: #94a3b8;
+      font-size:
+        10px;
     }
 
 
@@ -675,39 +873,57 @@
        ========================================================= */
 
     .typing {
-      display: inline-flex;
 
-      align-items: center;
+      display:
+        inline-flex;
 
-      gap: 5px;
+      align-items:
+        center;
+
+      gap:
+        5px;
     }
 
+
     .typing span {
-      width: 6px;
-      height: 6px;
 
-      border-radius: 50%;
+      width:
+        6px;
 
-      background: #94a3b8;
+      height:
+        6px;
+
+      border-radius:
+        50%;
+
+      background:
+        #94a3b8;
 
       animation:
         typing 1.15s infinite ease-in-out;
     }
 
+
     .typing span:nth-child(2) {
-      animation-delay: .15s;
+
+      animation-delay:
+        .15s;
     }
 
+
     .typing span:nth-child(3) {
-      animation-delay: .30s;
+
+      animation-delay:
+        .30s;
     }
 
 
     /* =========================================================
-       COMPOSER
+       INPUT
        ========================================================= */
 
     .composer-wrap {
+
       padding:
         11px 18px 17px;
 
@@ -717,1329 +933,12 @@
       border-top:
         1px solid rgba(148,163,184,0.16);
 
-      backdrop-filter: blur(16px);
+      backdrop-filter:
+        blur(16px);
     }
+
 
     .composer {
-      width: min(980px, 100%);
-      margin: 0 auto;
-    }
 
-    .input-box {
-      display: flex;
-      align-items: flex-end;
-
-      gap: 9px;
-
-      padding:
-        8px 8px 8px 16px;
-
-      border:
-        1px solid #dbe4ef;
-
-      border-radius: 18px;
-
-      background: #ffffff;
-
-      box-shadow:
-        0 8px 30px rgba(15,23,42,0.055);
-
-      transition:
-        border-color .18s ease,
-        box-shadow .18s ease;
-    }
-
-    .input-box:focus-within {
-      border-color: #93c5fd;
-
-      box-shadow:
-        0 0 0 4px rgba(37,99,235,0.065),
-        0 10px 32px rgba(15,23,42,0.06);
-    }
-
-    textarea {
-      flex: 1;
-
-      width: 100%;
-
-      min-height: 44px;
-      max-height: 145px;
-
-      resize: none;
-
-      border: 0;
-      outline: 0;
-
-      padding:
-        9px 0;
-
-      background: transparent;
-
-      color: #0f172a;
-
-      font-size: 14px;
-
-      line-height: 1.5;
-    }
-
-    textarea::placeholder {
-      color: #94a3b8;
-    }
-
-    .send-btn {
-      width: 44px;
-      height: 44px;
-
-      flex: 0 0 44px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border: 0;
-
-      border-radius: 14px;
-
-      color: white;
-
-      background:
-        linear-gradient(
-          135deg,
-          #2563eb,
-          #06b6d4
-        );
-
-      box-shadow:
-        0 8px 20px rgba(37,99,235,0.20);
-
-      cursor: pointer;
-
-      font-size: 18px;
-
-      transition:
-        transform .18s ease,
-        box-shadow .18s ease,
-        opacity .18s ease;
-    }
-
-    .send-btn:hover {
-      transform: translateY(-1px);
-
-      box-shadow:
-        0 11px 24px rgba(37,99,235,0.25);
-    }
-
-    .send-btn:active {
-      transform: translateY(0);
-    }
-
-    .send-btn:disabled {
-      cursor: not-allowed;
-
-      opacity: .48;
-
-      box-shadow: none;
-
-      transform: none;
-    }
-
-    .composer-footer {
-      display: flex;
-      justify-content: center;
-
-      margin-top: 8px;
-
-      font-size: 10.5px;
-
-      color: #94a3b8;
-    }
-
-
-    /* =========================================================
-       ERROR
-       ========================================================= */
-
-    .error-bubble {
-      color: #b91c1c !important;
-
-      background: #fff7f7 !important;
-
-      border-color: #fecaca !important;
-    }
-
-
-    /* =========================================================
-       ANIMATIONS
-       ========================================================= */
-
-    @keyframes messageIn {
-
-      from {
-        opacity: 0;
-        transform: translateY(5px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-    }
-
-    @keyframes typing {
-
-      0%,
-      60%,
-      100% {
-        transform: translateY(0);
-        opacity: .4;
-      }
-
-      30% {
-        transform: translateY(-3px);
-        opacity: 1;
-      }
-
-    }
-
-
-    /* =========================================================
-       MOBILE
-       ========================================================= */
-
-    @media (max-width: 720px) {
-
-      .header {
-        height: 66px;
-        min-height: 66px;
-
-        padding:
-          0 12px;
-      }
-
-      .company-logo {
-        width: 40px;
-        height: 40px;
-
-        flex-basis: 40px;
-      }
-
-      .brand-title {
-        font-size: 15px;
-      }
-
-      .brand-subtitle {
-        font-size: 11px;
-      }
-
-      .new-chat-btn {
-        padding:
-          9px 10px;
-
-        font-size: 12px;
-      }
-
-      .new-chat-btn span {
-        display: none;
-      }
-
-      .chat-area {
-        padding:
-          18px 11px 14px;
-      }
-
-      .message-row {
-        max-width: 92%;
-      }
-
-      .bubble {
-        font-size: 13.5px;
-
-        padding:
-          11px 13px;
-      }
-
-      .avatar {
-        width: 31px;
-        height: 31px;
-
-        flex-basis: 31px;
-      }
-
-      .quick-actions {
-        grid-template-columns: 1fr;
-
-        gap: 10px;
-
-        margin-top: 22px;
-      }
-
-      .welcome {
-        padding:
-          25px 5px 60px;
-      }
-
-      .welcome-logo {
-        width: 70px;
-        height: 70px;
-      }
-
-      .welcome p {
-        font-size: 14px;
-      }
-
-      .composer-wrap {
-        padding:
-          8px 9px 12px;
-      }
-
-      .composer-footer {
-        font-size: 9.5px;
-      }
-
-    }
-
-  </style>
-</head>
-
-
-<body>
-
-<div class="app">
-
-
-  <!-- =======================================================
-       HEADER
-       ======================================================= -->
-
-  <header class="header">
-
-    <div class="brand">
-
-      <div class="company-logo">
-        <img
-          <img
-  id="headerLogo"
-  src="./LogoSEWONVINA.png"
-  alt="Logo công ty">
-      </div>
-
-      <div class="brand-info">
-
-        <div class="brand-title">
-          Trợ lý AI
-        </div>
-
-        <div class="brand-subtitle">
-
-          <span class="online-dot"></span>
-
-          Đang hoạt động
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <button
-      class="new-chat-btn"
-      id="newChatBtn">
-
-      <span>＋</span>
-
-      <span>Hội thoại mới</span>
-
-    </button>
-
-  </header>
-
-
-  <!-- =======================================================
-       CHAT AREA
-       ======================================================= -->
-
-  <main
-    class="chat-area"
-    id="chatArea">
-
-    <div
-      class="chat-content"
-      id="chatContent">
-
-
-      <!-- ===================================================
-           WELCOME
-           =================================================== -->
-
-      <section
-        class="welcome"
-        id="welcome">
-
-        <div class="welcome-logo">
-
-          <img
-            <img
-  id="welcomeLogo"
-  src="./LogoSEWONVINA.png"
-  alt="Logo công ty">
-        </div>
-
-
-        <div class="welcome-badge">
-          ✨ Trợ lý thông minh
-        </div>
-
-
-        <h1>
-          Xin chào! <span>👋</span>
-        </h1>
-
-
-        <p>
-          Tôi là Trợ lý ảo SEWON Vina. Hãy đặt câu hỏi,
-          yêu cầu hỗ trợ hoặc chọn một gợi ý bên dưới
-          để bắt đầu cuộc trò chuyện.
-        </p>
-
-
-        <div class="quick-actions">
-
-
-          <button
-            class="quick-action"
-            data-message="Tôi có thể hỏi bạn những gì?">
-
-            <div class="quick-icon">
-              💡
-            </div>
-
-            <div class="quick-text">
-
-              <div class="quick-title">
-                Tôi có thể hỏi bạn những gì?
-              </div>
-
-              <div class="quick-desc">
-                Khám phá khả năng của Trợ lý AI
-              </div>
-
-            </div>
-
-          </button>
-
-
-          <button
-            class="quick-action"
-            data-message="Hãy giới thiệu về bạn">
-
-            <div class="quick-icon">
-              🤖
-            </div>
-
-            <div class="quick-text">
-
-              <div class="quick-title">
-                Hãy giới thiệu về bạn
-              </div>
-
-              <div class="quick-desc">
-                Tìm hiểu về Trợ lý AI
-              </div>
-
-            </div>
-
-          </button>
-
-
-          <button
-            class="quick-action"
-            data-message="Giúp tôi tìm thông tin">
-
-            <div class="quick-icon">
-              🔎
-            </div>
-
-            <div class="quick-text">
-
-              <div class="quick-title">
-                Giúp tôi tìm thông tin
-              </div>
-
-              <div class="quick-desc">
-                Hỗ trợ tra cứu và giải đáp
-              </div>
-
-            </div>
-
-          </button>
-
-
-          <button
-            class="quick-action"
-            data-message="Hướng dẫn tôi sử dụng hệ thống">
-
-            <div class="quick-icon">
-              🧭
-            </div>
-
-            <div class="quick-text">
-
-              <div class="quick-title">
-                Hướng dẫn tôi sử dụng hệ thống
-              </div>
-
-              <div class="quick-desc">
-                Hỗ trợ từng bước khi cần
-              </div>
-
-            </div>
-
-          </button>
-
-
-        </div>
-
-      </section>
-
-
-    </div>
-
-  </main>
-
-
-  <!-- =======================================================
-       COMPOSER
-       ======================================================= -->
-
-  <section class="composer-wrap">
-
-    <div class="composer">
-
-      <div class="input-box">
-
-        <textarea
-          id="messageInput"
-          rows="1"
-          placeholder="Nhập câu hỏi của bạn..."
-          autocomplete="off"
-          translate="no"></textarea>
-
-
-        <button
-          class="send-btn"
-          id="sendBtn"
-          title="Gửi">
-
-          ➤
-
-        </button>
-
-      </div>
-
-
-      <div class="composer-footer">
-        Trợ lý AI có thể đưa ra thông tin chưa chính xác.
-      </div>
-
-    </div>
-
-  </section>
-
-
-</div>
-
-
-<script>
-
-  /* ============================================================
-     1. CẤU HÌNH
-     ============================================================
-
-     CHỈ SỬA 3 DÒNG DƯỚI ĐÂY
-     ============================================================ */
-
-  /* ----------- DIFY API KEY ----------- */
-
-  const DIFY_API_KEY =
-    "app-SyULax2Wzgg5fFfPkw11wDWm";
-
-
-  /* ----------- DIFY API URL ----------- */
-
-  const DIFY_API_URL =
-    "https://academics-beautifully-learners-absence.trycloudflare.com/v1/chat-messages";
-
-
-  /* ============================================================
-     2. BIẾN HỘI THOẠI
-     ============================================================ */
-
-  let conversationId = "";
-
-  let isSending = false;
-
-
-  /* ============================================================
-     3. DOM
-     ============================================================ */
-
-  const chatArea =
-    document.getElementById("chatArea");
-
-  const chatContent =
-    document.getElementById("chatContent");
-
-  const messageInput =
-    document.getElementById("messageInput");
-
-  const sendBtn =
-    document.getElementById("sendBtn");
-
-  const newChatBtn =
-    document.getElementById("newChatBtn");
-
-  const headerLogo =
-    document.getElementById("headerLogo");
-
-  const welcomeLogo =
-    document.getElementById("welcomeLogo");
-
-
-  /* ============================================================
-     4. LOGO
-     ============================================================ */
-
-  /* ============================================================
-     5. AUTO RESIZE INPUT
-     ============================================================ */
-
-  messageInput.addEventListener(
-    "input",
-    () => {
-
-      messageInput.style.height =
-        "auto";
-
-      messageInput.style.height =
-        Math.min(
-          messageInput.scrollHeight,
-          145
-        ) + "px";
-
-    }
-  );
-
-
-  /* ============================================================
-     6. ENTER ĐỂ GỬI
-     ============================================================ */
-
-  messageInput.addEventListener(
-    "keydown",
-    event => {
-
-      if (
-        event.key === "Enter" &&
-        !event.shiftKey
-      ) {
-
-        event.preventDefault();
-
-        sendMessage();
-
-      }
-
-    }
-  );
-
-
-  /* ============================================================
-     7. QUICK ACTIONS
-     ============================================================ */
-
-  function attachQuickActions() {
-
-    document
-      .querySelectorAll(".quick-action")
-      .forEach(button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            const message =
-              button.dataset.message || "";
-
-            messageInput.value =
-              message;
-
-            messageInput.dispatchEvent(
-              new Event("input")
-            );
-
-            sendMessage();
-
-          }
-        );
-
-      });
-
-  }
-
-
-  attachQuickActions();
-
-
-  /* ============================================================
-     8. NEW CHAT
-     ============================================================ */
-
-  newChatBtn.addEventListener(
-    "click",
-    () => {
-
-      conversationId = "";
-
-      chatContent.innerHTML = "";
-
-
-      chatContent.innerHTML = `
-
-        <section class="welcome">
-
-          <div class="welcome-logo">
-
-            <img
-              src="${escapeAttribute(COMPANY_LOGO)}"
-              alt="Logo công ty">
-
-          </div>
-
-          <div class="welcome-badge">
-            ✨ Trợ lý thông minh
-          </div>
-
-          <h1>
-            Xin chào! <span>👋</span>
-          </h1>
-
-          <p>
-            Tôi là Trợ lý AI. Hãy đặt câu hỏi,
-            yêu cầu hỗ trợ hoặc chọn một gợi ý bên dưới
-            để bắt đầu cuộc trò chuyện.
-          </p>
-
-          <div class="quick-actions">
-
-            <button
-              class="quick-action"
-              data-message="Tôi có thể hỏi bạn những gì?">
-
-              <div class="quick-icon">
-                💡
-              </div>
-
-              <div class="quick-text">
-
-                <div class="quick-title">
-                  Tôi có thể hỏi bạn những gì?
-                </div>
-
-                <div class="quick-desc">
-                  Khám phá khả năng của Trợ lý AI
-                </div>
-
-              </div>
-
-            </button>
-
-
-            <button
-              class="quick-action"
-              data-message="Hãy giới thiệu về bạn">
-
-              <div class="quick-icon">
-                🤖
-              </div>
-
-              <div class="quick-text">
-
-                <div class="quick-title">
-                  Hãy giới thiệu về bạn
-                </div>
-
-                <div class="quick-desc">
-                  Tìm hiểu về Trợ lý AI
-                </div>
-
-              </div>
-
-            </button>
-
-
-            <button
-              class="quick-action"
-              data-message="Giúp tôi tìm thông tin">
-
-              <div class="quick-icon">
-                🔎
-              </div>
-
-              <div class="quick-text">
-
-                <div class="quick-title">
-                  Giúp tôi tìm thông tin
-                </div>
-
-                <div class="quick-desc">
-                  Hỗ trợ tra cứu và giải đáp
-                </div>
-
-              </div>
-
-            </button>
-
-
-            <button
-              class="quick-action"
-              data-message="Hướng dẫn tôi sử dụng hệ thống">
-
-              <div class="quick-icon">
-                🧭
-              </div>
-
-              <div class="quick-text">
-
-                <div class="quick-title">
-                  Hướng dẫn tôi sử dụng hệ thống
-                </div>
-
-                <div class="quick-desc">
-                  Hỗ trợ từng bước khi cần
-                </div>
-
-              </div>
-
-            </button>
-
-          </div>
-
-        </section>
-
-      `;
-
-
-      attachQuickActions();
-
-      messageInput.value = "";
-
-      messageInput.style.height =
-        "auto";
-
-      messageInput.focus();
-
-      scrollToBottom();
-
-    }
-  );
-
-
-  /* ============================================================
-     9. ADD MESSAGE
-     ============================================================ */
-
-  function addMessage(
-    role,
-    text
-  ) {
-
-    const message =
-      document.createElement("div");
-
-    message.className =
-      `message ${role}`;
-
-
-    const row =
-      document.createElement("div");
-
-    row.className =
-      "message-row";
-
-
-    const avatar =
-      document.createElement("div");
-
-    avatar.className =
-      "avatar";
-
-
-    if (role === "ai") {
-
-      avatar.innerHTML = `
-        <img
-          src="${escapeAttribute(COMPANY_LOGO)}"
-          alt="AI">
-      `;
-
-    } else {
-
-      avatar.textContent =
-        "👤";
-
-    }
-
-
-    const bubbleWrap =
-      document.createElement("div");
-
-    bubbleWrap.className =
-      "bubble-wrap";
-
-
-    const bubble =
-      document.createElement("div");
-
-    bubble.className =
-      "bubble";
-
-    bubble.textContent =
-      text;
-
-
-    const time =
-      document.createElement("div");
-
-    time.className =
-      "message-time";
-
-    time.textContent =
-      getCurrentTime();
-
-
-    bubbleWrap.appendChild(
-      bubble
-    );
-
-    bubbleWrap.appendChild(
-      time
-    );
-
-
-    row.appendChild(
-      avatar
-    );
-
-    row.appendChild(
-      bubbleWrap
-    );
-
-
-    message.appendChild(
-      row
-    );
-
-
-    chatContent.appendChild(
-      message
-    );
-
-
-    scrollToBottom();
-
-
-    return bubble;
-
-  }
-
-
-  /* ============================================================
-     10. TYPING
-     ============================================================ */
-
-  function addTypingMessage() {
-
-    const message =
-      document.createElement("div");
-
-    message.className =
-      "message ai";
-
-
-    const row =
-      document.createElement("div");
-
-    row.className =
-      "message-row";
-
-
-    const avatar =
-      document.createElement("div");
-
-    avatar.className =
-      "avatar";
-
-
-    avatar.innerHTML = `
-      <img
-        src="${escapeAttribute(COMPANY_LOGO)}"
-        alt="AI">
-    `;
-
-
-    const bubbleWrap =
-      document.createElement("div");
-
-    bubbleWrap.className =
-      "bubble-wrap";
-
-
-    const bubble =
-      document.createElement("div");
-
-    bubble.className =
-      "bubble";
-
-
-    bubble.innerHTML = `
-      <div class="typing">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    `;
-
-
-    bubbleWrap.appendChild(
-      bubble
-    );
-
-    row.appendChild(
-      avatar
-    );
-
-    row.appendChild(
-      bubbleWrap
-    );
-
-    message.appendChild(
-      row
-    );
-
-    chatContent.appendChild(
-      message
-    );
-
-
-    scrollToBottom();
-
-
-    return bubble;
-
-  }
-
-
-  /* ============================================================
-     11. SEND MESSAGE
-     ============================================================ */
-
-  async function sendMessage() {
-
-    if (isSending) {
-      return;
-    }
-
-
-    const query =
-      messageInput.value.trim();
-
-
-    if (!query) {
-      return;
-    }
-
-
-    if (
-      !DIFY_API_KEY ||
-      DIFY_API_KEY ===
-      "DÁN_API_KEY_DIFY_VÀO_ĐÂY"
-    ) {
-
-      alert(
-        "Bạn chưa nhập Dify API Key."
-      );
-
-      return;
-
-    }
-
-
-    isSending = true;
-
-    sendBtn.disabled = true;
-
-
-    /* USER */
-
-    addMessage(
-      "user",
-      query
-    );
-
-
-    /* CLEAR */
-
-    messageInput.value = "";
-
-    messageInput.style.height =
-      "auto";
-
-
-    /* TYPING */
-
-    const typingBubble =
-      addTypingMessage();
-
-
-    try {
-
-      const response =
-        await fetch(
-          DIFY_API_URL,
-          {
-
-            method: "POST",
-
-            headers: {
-
-              "Authorization":
-                "Bearer " +
-                DIFY_API_KEY,
-
-              "Content-Type":
-                "application/json"
-
-            },
-
-            body: JSON.stringify({
-
-              inputs: {},
-
-              query: query,
-
-              response_mode:
-                "blocking",
-
-              conversation_id:
-                conversationId,
-
-              user:
-                "github-pages-user"
-
-            })
-
-          }
-        );
-
-
-      /* HTTP ERROR */
-
-      if (!response.ok) {
-
-        const errorText =
-          await response.text();
-
-        console.error(
-          "DIFY API ERROR:",
-          errorText
-        );
-
-        throw new Error(
-          errorText ||
-          `HTTP ${response.status}`
-        );
-
-      }
-
-
-      /* JSON */
-
-      const data =
-        await response.json();
-
-
-      /* ANSWER */
-
-      let answer =
-        data.answer || "";
-
-
-      /*
-       * SAFETY:
-       * Nếu model vẫn trả <think>...</think>
-       * thì ẩn phần đó khỏi giao diện.
-       */
-
-      answer =
-        removeThinking(answer);
-
-
-      if (!answer) {
-
-        answer =
-          "Tôi chưa nhận được câu trả lời.";
-
-      }
-
-
-      typingBubble.textContent =
-        answer;
-
-
-      /* CONVERSATION */
-
-      if (
-        data.conversation_id
-      ) {
-
-        conversationId =
-          data.conversation_id;
-
-      }
-
-
-    } catch (error) {
-
-      console.error(
-        "CHAT ERROR:",
-        error
-      );
-
-
-      typingBubble.textContent =
-        "Xin lỗi, hiện tại tôi không thể kết nối với Trợ lý AI.";
-
-
-      typingBubble.classList.add(
-        "error-bubble"
-      );
-
-    }
-
-
-    isSending = false;
-
-    sendBtn.disabled = false;
-
-    messageInput.focus();
-
-    scrollToBottom();
-
-  }
-
-
-  /* ============================================================
-     12. REMOVE THINKING
-     ============================================================ */
-
-  function removeThinking(text) {
-
-    if (!text) {
-      return "";
-    }
-
-
-    /*
-     * Xóa:
-     *
-     * <think> ... </think>
-     */
-
-    text =
-      text.replace(
-        /<think>[\s\S]*?<\/think>/gi,
-        ""
-      );
-
-
-    /*
-     * Xóa trường hợp model chỉ mở <think>
-     */
-
-    text =
-      text.replace(
-        /<think>[\s\S]*/gi,
-        ""
-      );
-
-
-    return text.trim();
-
-  }
-
-
-  /* ============================================================
-     13. TIME
-     ============================================================ */
-
-  function getCurrentTime() {
-
-    const now =
-      new Date();
-
-    return now.toLocaleTimeString(
-      "vi-VN",
-      {
-        hour: "2-digit",
-        minute: "2-digit"
-      }
-    );
-
-  }
-
-
-  /* ============================================================
-     14. ESCAPE ATTRIBUTE
-     ============================================================ */
-
-  function escapeAttribute(value) {
-
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-
-  }
-
-
-  /* ============================================================
-     15. SCROLL
-     ============================================================ */
-
-  function scrollToBottom() {
-
-    requestAnimationFrame(
-      () => {
-
-        chatArea.scrollTop =
-          chatArea.scrollHeight;
-
-      }
-    );
-
-  }
-
-
-  /* ============================================================
-     16. START
-     ============================================================ */
-
-  messageInput.focus();
-
-</script>
-
-</body>
-</html>
+      width:
+        min
